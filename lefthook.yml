@@ -1,0 +1,23 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://evilmartians.github.io/lefthook/configuration/
+#
+pre-push:
+  parallel: true
+  commands:
+    packages-audit:
+      run: npm run build
+
+pre-commit:
+  parallel: true
+  commands:
+    linter:
+      glob: 'src/*.{js,ts,jsx,tsx}'
+      run: npx eslint {staged_files}
+    prettier:
+      glob: '*.{js,ts,jsx,tsx,css,scss,json,md}'
+      run: npx prettier --write {staged_files}
+    tests:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: npm run test:deploy --findRelatedTests --bail

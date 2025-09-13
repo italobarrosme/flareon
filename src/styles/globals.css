@@ -1,0 +1,200 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-*: initial;
+  --font-sans: Graphik, sans-serif;
+  --font-serif: Merriweather, serif;
+  --font-mono: Fira Code;
+
+  --animate-*: initial;
+  --animate-spin: spin 1s linear infinite;
+  --animate-wave: wave 1.6s ease-in-out infinite;
+  --animate-shimmer: shimmer infinite alternate ease-in-out;
+  --animate-bounce-in: bounce-in 0.3s ease-in-out;
+  --animate-fade-in: fade-in 0.2s ease-in-out;
+  --animate-fade-out: fade-out 0.2s ease-in-out;
+  --animate-in: in 0.2s ease-in;
+  --animate-out: out 0.2s ease-out;
+  --animate-slide-out: slide-out 0.2s ease-out;
+  --animate-slide-in-from-bottom: slide-in-from-bottom 0.2s ease-in;
+  --animate-slide-in-from-left: slide-in-from-left 0.4s ease-in;
+  --animate-slide-out-to-left: slide-out-to-left 0.4s ease-out;
+  --animate-slide-in-from-right: slide-in-from-right 0.4s ease-in;
+  --animate-slide-out-to-right: slide-out-to-right 0.4s ease-out;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-bounce-right: bounce-right 1s ease-in-out infinite;
+
+  --color-primary-regular: hsl(210 91% 45%);
+  --color-primary-foreground: hsl(0 10% 93%);
+
+  --color-secondary-regular: hsl(220 70% 20%);
+  --color-secondary-foreground: hsl(220 100% 98%);
+
+  --color-neutral-black: hsl(0 0% 7.5%);
+  --color-neutral-white: hsl(0 0% 97.6%);
+  --color-neutral-grey: hsl(0 0% 76.9%);
+  --color-neutral-grey-light: hsl(0 0% 98%);
+  --color-neutral-dark: hsl(180 23.5% 9%);
+
+  --color-feedback-error: hsl(4 89% 58%);
+  --color-feedback-warning: hsl(36 100% 50%);
+  --color-feedback-success: hsl(122 39% 54%);
+  --color-feedback-info: hsl(207 90% 57%);
+
+  --color-complementary-highlight: hsl(39 100% 50%);
+
+  --breakpoint-sm: 680px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-md: 900px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1440px;
+
+  --background-image-effect-granula: url('/effectgranula.png');
+
+  --min-height-screen-nav: calc(100vh - 5rem);
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes wave {
+    0% {
+      transform: scaleX(1);
+      opacity: 0.5;
+    }
+    25% {
+      transform: scaleX(2.1);
+    }
+    50% {
+      transform: scaleX(3.2);
+      opacity: 1;
+    }
+    75% {
+      transform: scaleX(2.1);
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 0.5;
+    }
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0.1) translateY(100%);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes slide-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  @keyframes slide-in-from-bottom {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes slide-in-from-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slide-out-to-left {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes slide-in-from-right {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slide-out-to-right {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+  @keyframes bounce-right {
+    0%,
+    100% {
+      transform: translateX(-2px);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
+}

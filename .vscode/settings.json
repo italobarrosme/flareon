@@ -1,0 +1,16 @@
+{
+  "editor.fontSize": 15,
+  "terminal.integrated.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    ".Styles",
+    ".*Classes.*"
+  ],
+  "tailwindCSS.experimental.classRegex": ["clsx\\([\"']([\\s\\S]*?)[\"']\\)"]
+}
