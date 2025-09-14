@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 
 import { ReactNode } from 'react'
 import { Metadata } from 'next'
+import { QueryProvider } from '@/modules/common/providers'
 
 type Props = {
   children?: ReactNode
@@ -20,7 +21,9 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body className=" bg-neutral-dark text-neutral-white">
-        <main className="w-screen h-screen">{children}</main>
+        <QueryProvider>
+          <main className="w-screen h-screen">{children}</main>
+        </QueryProvider>
       </body>
     </html>
   )

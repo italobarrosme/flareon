@@ -1,20 +1,14 @@
 'use client'
-import dynamic from 'next/dynamic'
 
-const CanvasComponent = dynamic(() => import('@/modules/3d/CanvasComponent'), {
-  ssr: false,
-})
-
-const Scene = dynamic(() => import('@/modules/3d/Scene'), {
-  ssr: false,
-})
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function Home() {
-  return (
-    <>
-      <CanvasComponent>
-        <Scene />
-      </CanvasComponent>
-    </>
-  )
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push('/games')
+  }, [])
+
+  return null
 }
