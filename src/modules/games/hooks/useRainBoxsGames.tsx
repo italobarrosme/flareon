@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from 'react'
 import { BoxData } from '../boxGame/type'
 import { useQuery } from '@tanstack/react-query'
-import { getGames, Game } from '../services/getGames'
+import { Game } from '../services/getGames'
 import { generateGameId } from '@/modules/common/utils'
+import { getGamesSteam } from '../services/getGamesSteam'
 
 // Configuração do intervalo entre cada box que cai (em milissegundos)
 const RAIN_INTERVAL = 800 // 800ms = 0.3 segundos entre cada box
@@ -26,7 +27,7 @@ export const useRainBoxsGames = () => {
     refetchOnReconnect: false,
     refetchInterval: 1000 * 60 * 5,
     refetchIntervalInBackground: false,
-    queryFn: getGames,
+    queryFn: getGamesSteam,
   })
 
   // Efeito para fazer os games caírem gradualmente quando os dados chegam

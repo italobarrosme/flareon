@@ -1,8 +1,8 @@
 'use server'
 
 import { getCache, setCache } from '@/utils/cacheApiResult/cacheApiResult'
-// import { api } from '@/modules/common/http/apiKy'
-// import { mockGetGamesResult } from './mockGetGamesResult'
+// import ky from 'ky'
+import { mockGetGamesResult } from './mockGetGamesResult'
 
 export type Game = {
   id: number
@@ -21,7 +21,11 @@ export type Game = {
 export type GameResponse = Game[]
 
 const cacheKey = 'games'
-const API_FREETOGAMES_URL = process.env.API_FREETOGAMES_URL
+
+// Configuração RapidAPI
+// const API_RAPIDAPI_FRETOGAMES_URL = process.env.API_RAPIDAPI_FRETOGAMES_URL
+// const API_RAPIDAPI_KEY = process.env.API_RAPIDAPI_KEY
+// const API_RAPIDAPI_HOST_GAMES = process.env.API_RAPIDAPI_HOST_GAMES
 
 export const getGames = async (): Promise<GameResponse> => {
   const cachedData = getCache<Game>(cacheKey)
@@ -30,12 +34,25 @@ export const getGames = async (): Promise<GameResponse> => {
     return cachedData.data
   }
 
-  const response = await fetch(`${API_FREETOGAMES_URL}/games`)
-  const data = await response.json()
+  // const response = await ky.get<GameResponse>(
+  //   `${API_RAPIDAPI_FRETOGAMES_URL}/games`,
+  //   {
+  //     method: 'GET',
+  //     headers: {
+  //       'X-RapidAPI-Key': API_RAPIDAPI_KEY!,
+  //       'X-RapidAPI-Host': API_RAPIDAPI_HOST_GAMES!,
+  //       'Content-Type': 'application/json',
+  //     },
+  //   }
+  // )
 
-  setCache<Game>(cacheKey, data)
+  // if (!response.ok) {
+  //   throw new Error(`RapidAPI Error: ${response.status} ${response.statusText}`)
+  // }
 
-  return data
+  // const data = await response.json()
 
-  // return mockGetGamesResult
+  setCache<Game>(cacheKey, mockGetGamesResult)
+
+  return mockGetGamesResult
 }

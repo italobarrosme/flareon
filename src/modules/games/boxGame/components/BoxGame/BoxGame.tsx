@@ -1,33 +1,101 @@
-import { TextureLoader } from 'three'
+import {
+  Group,
+  Texture,
+  TextureLoader,
+  MeshStandardMaterial,
+  RepeatWrapping,
+} from 'three'
 import { BoxData } from '../../type'
+import { useMemo, useRef } from 'react'
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
+
+type CapinhaProps = {
+  onClick: (id: string) => void
+  texture: Texture
+  id: string
+  position: [number, number, number]
+  rotation: [number, number, number]
+}
 
 type BoxGameProps = {
   onClick: (id: string) => void
 } & BoxData
 
 export const BoxGame = ({
-  id,
   position,
   rotation,
   thumbnail,
   onClick,
+  id,
 }: BoxGameProps) => {
-  const textureLoader = new TextureLoader()
+  const texture = useMemo(() => {
+    const tex = new TextureLoader().load(thumbnail)
 
-  console.log(thumbnail, 'thumbnail')
+    // 🔥 espelhamento horizontal
+    tex.wrapS = RepeatWrapping
+    tex.wrapT = RepeatWrapping
+    tex.repeat.x = -1
+    tex.offset.x = 1 // corrige o deslocamento
 
-  const texture = textureLoader.load(thumbnail)
+    tex.needsUpdate = true
+    return tex
+  }, [thumbnail])
 
   return (
-    <mesh
-      castShadow
-      position={position}
+    <Capinha
+      onClick={onClick}
+      id={id}
       rotation={rotation}
-      onClick={() => onClick(id.toString())}
-    >
-      {/* Cartão de jogo */}
-      <boxGeometry args={[1.6, 2.4, 0.1]} scale={2} />
-      <meshStandardMaterial map={texture} color="white" opacity={0.8} />
-    </mesh>
+      position={position}
+      texture={texture}
+    />
   )
 }
+
+export function Capinha({
+  onClick,
+  rotation,
+  position,
+  texture,
+  id,
+}: CapinhaProps) {
+  const capinhaRef = useRef<Group>(null)
+  const { nodes, materials } = useGLTF('/capinha/capinha.glb') as any
+
+  const customMaterial = useMemo(() => {
+    return new MeshStandardMaterial({ map: texture })
+  }, [texture])
+
+  return (
+    <group
+      ref={capinhaRef}
+      scale={0.1}
+      dispose={null}
+      onClick={() => onClick(id)}
+      position={position}
+      rotation={rotation}
+    >
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_4?.geometry}
+        material={materials.plastic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_6?.geometry}
+        material={materials.foil}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_8?.geometry}
+        material={customMaterial}
+      />
+    </group>
+  )
+}
+
+useGLTF.preload('/capinha/capinha.glb')
