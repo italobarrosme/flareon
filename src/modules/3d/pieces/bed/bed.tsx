@@ -1,18 +1,16 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
+import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
-interface BedProps {
-  [key: string]: any
-}
-
-export function Bed(props: BedProps) {
+export function Bed(props: FurnitureProps) {
   const { nodes, materials } = useGLTF('/bed.glb')
+  const modelNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={(nodes.model as any).geometry}
+        geometry={modelNode.geometry}
         material={materials.model}
       />
     </group>
