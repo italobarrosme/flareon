@@ -33,7 +33,7 @@ export const RenderCanvas = ({ children }: RenderCanvasProps) => {
         target0={initialLookAt}
         enableDamping={false}
         dampingFactor={0.05}
-        // enableZoom={false}
+        enableZoom={false}
         // enableRotate={false}
         // enablePan={false}
       />

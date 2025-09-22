@@ -9,6 +9,7 @@ import { ThreeEvent } from '@react-three/fiber'
 import { EffectComposer, Outline } from '@react-three/postprocessing'
 import { useRef } from 'react'
 import { Selection, Select } from '@react-three/postprocessing'
+import { Pointer } from '../animations/components/Pointer/Pointer'
 
 type SceneProps = {
   gameData: {
@@ -76,6 +77,7 @@ export const Scene = ({ gameData }: SceneProps) => {
                 />
               )
             })}
+            <Pointer />
           </Physics>
 
           {/* Plano de informações do jogo selecionado */}
