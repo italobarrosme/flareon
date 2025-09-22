@@ -1,27 +1,27 @@
-import { useEffect, useMemo, useRef } from 'react'
-import * as THREE from 'three'
-import { Group } from 'three'
+import { useEffect, useMemo, useRef } from 'react';
+import * as THREE from 'three';
+import { Group } from 'three';
 
 type BoardProps = {
-  width?: number
-  height?: number
-  color?: string
-  lineColor?: string
-  env?: any
-  onClick?: (mesh: Group) => void
-}
+  width?: number;
+  height?: number;
+  color?: string;
+  lineColor?: string;
+  env?: any;
+  onClick?: (mesh: Group) => void;
+};
 
 // Cache global para geometrias do board
-const geometryCache = new Map<string, THREE.PlaneGeometry>()
-const materialCache = new Map<string, THREE.MeshStandardMaterial>()
+const geometryCache = new Map<string, THREE.PlaneGeometry>();
+const materialCache = new Map<string, THREE.MeshStandardMaterial>();
 
 const getGeometry = (width: number, height: number) => {
-  const key = `${width}x${height}`
+  const key = `${width}x${height}`;
   if (!geometryCache.has(key)) {
-    geometryCache.set(key, new THREE.PlaneGeometry(width, height))
+    geometryCache.set(key, new THREE.PlaneGeometry(width, height));
   }
-  return geometryCache.get(key)!
-}
+  return geometryCache.get(key)!;
+};
 
 const getMaterial = (color: string) => {
   if (!materialCache.has(color)) {
@@ -32,10 +32,10 @@ const getMaterial = (color: string) => {
         // Otimizações de material
         flatShading: true, // Reduzir cálculos de iluminação
       })
-    )
+    );
   }
-  return materialCache.get(color)!
-}
+  return materialCache.get(color)!;
+};
 
 export const Board = ({
   width = 16,
@@ -45,26 +45,26 @@ export const Board = ({
   env,
   onClick,
 }: BoardProps) => {
-  const boardRef = useRef<Group>(null)
+  const boardRef = useRef<Group>(null);
 
   // Usar geometrias e materiais cacheados
   const frameGeometry = useMemo(
     () => getGeometry(width, height),
     [width, height]
-  )
+  );
   const boardGeometry = useMemo(
     () => getGeometry(width - 0.3, height - 0.3),
     [width, height]
-  )
-  const frameMaterial = useMemo(() => getMaterial(lineColor), [lineColor])
-  const boardMaterial = useMemo(() => getMaterial(color), [color])
+  );
+  const frameMaterial = useMemo(() => getMaterial(lineColor), [lineColor]);
+  const boardMaterial = useMemo(() => getMaterial(color), [color]);
 
   useEffect(() => {
     // Não fazer dispose de recursos compartilhados
     return () => {
       // Cleanup mínimo - recursos são gerenciados globalmente
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <group
@@ -74,7 +74,7 @@ export const Board = ({
       receiveShadow
       onClick={() => {
         if (onClick && boardRef.current) {
-          onClick(boardRef.current)
+          onClick(boardRef.current);
         }
       }}
       ref={boardRef}
@@ -93,5 +93,5 @@ export const Board = ({
         material-envMap={env}
       />
     </group>
-  )
-}
+  );
+};
