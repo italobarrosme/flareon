@@ -2,4 +2,4 @@ export {
   useBoardLimits,
   isPositionWithinBoardLimits,
   clampPositionToBoardLimits,
-} from './useBoardLimits';
+} from './useBoardLimits'

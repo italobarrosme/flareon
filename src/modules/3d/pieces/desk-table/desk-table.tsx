@@ -1,12 +1,12 @@
-import React from 'react';
-import { useGLTF } from '@react-three/drei';
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
 
 interface DeskTableProps {
-  [key: string]: any;
+  [key: string]: any
 }
 
 export function DeskTable(props: DeskTableProps) {
-  const { nodes, materials } = useGLTF('/desk-table.glb');
+  const { nodes, materials } = useGLTF('/desk-table.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -16,7 +16,7 @@ export function DeskTable(props: DeskTableProps) {
         material={materials['desk-table']}
       />
     </group>
-  );
+  )
 }
 
-useGLTF.preload('/desk-table.glb');
+useGLTF.preload('/desk-table.glb')

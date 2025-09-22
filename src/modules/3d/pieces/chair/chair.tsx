@@ -1,12 +1,12 @@
-import React from 'react';
-import { useGLTF } from '@react-three/drei';
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
 
 interface ChairProps {
-  [key: string]: any;
+  [key: string]: any
 }
 
 export function Chair(props: ChairProps) {
-  const { nodes, materials } = useGLTF('/chair.glb');
+  const { nodes, materials } = useGLTF('/chair.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -16,7 +16,7 @@ export function Chair(props: ChairProps) {
         material={materials.model}
       />
     </group>
-  );
+  )
 }
 
-useGLTF.preload('/chair.glb');
+useGLTF.preload('/chair.glb')

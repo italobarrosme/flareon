@@ -1,12 +1,12 @@
-import React from 'react';
-import { useGLTF } from '@react-three/drei';
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
 
 interface CaseProps {
-  [key: string]: any;
+  [key: string]: any
 }
 
 export function Case(props: CaseProps) {
-  const { nodes, materials } = useGLTF('/case.glb');
+  const { nodes, materials } = useGLTF('/case.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -16,7 +16,7 @@ export function Case(props: CaseProps) {
         material={materials.case}
       />
     </group>
-  );
+  )
 }
 
-useGLTF.preload('/case.glb');
+useGLTF.preload('/case.glb')

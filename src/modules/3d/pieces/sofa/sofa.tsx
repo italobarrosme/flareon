@@ -1,12 +1,12 @@
-import React from 'react';
-import { useGLTF } from '@react-three/drei';
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
 
 interface SofaProps {
-  [key: string]: any;
+  [key: string]: any
 }
 
 export function Sofa(props: SofaProps) {
-  const { nodes, materials } = useGLTF('/sofa.glb');
+  const { nodes, materials } = useGLTF('/sofa.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -16,7 +16,7 @@ export function Sofa(props: SofaProps) {
         material={materials.sofa}
       />
     </group>
-  );
+  )
 }
 
-useGLTF.preload('/sofa.glb');
+useGLTF.preload('/sofa.glb')

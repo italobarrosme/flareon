@@ -1,12 +1,12 @@
-import React from 'react';
-import { useGLTF } from '@react-three/drei';
+import React from 'react'
+import { useGLTF } from '@react-three/drei'
 
 interface ClosetProps {
-  [key: string]: any;
+  [key: string]: any
 }
 
 export function Closet(props: ClosetProps) {
-  const { nodes, materials } = useGLTF('/closet.glb');
+  const { nodes, materials } = useGLTF('/closet.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -16,7 +16,7 @@ export function Closet(props: ClosetProps) {
         material={materials.closet}
       />
     </group>
-  );
+  )
 }
 
-useGLTF.preload('/closet.glb');
+useGLTF.preload('/closet.glb')
