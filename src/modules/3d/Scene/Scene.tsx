@@ -1,9 +1,11 @@
 'use client'
 
 import { Physics, RigidBody } from '@react-three/rapier'
-import { BoxGame } from '@/modules/games/boxGame/components'
+import { AnimatedBoxGame } from '@/modules/games/boxGame/components'
+import { GameInfoPlane } from '@/modules/games/components'
 import { useChooseGames } from '@/modules/games/hooks/useChooseGames'
 import { BoxData } from '@/modules/games/boxGame/type'
+import { ThreeEvent } from '@react-three/fiber'
 
 type SceneProps = {
   gameData: {
@@ -42,41 +44,56 @@ export const Scene = ({ gameData }: SceneProps) => {
   //   }
   // }
 
-  const { handleChooseGames } = useChooseGames()
+  const {
+    handleChooseGames,
+    selectedGame,
+    showInfo,
+    resetGameSelection,
+    getInfoPlanePosition,
+    getSelectedGamePosition,
+  } = useChooseGames()
   const { boxes } = gameData
 
   if (!boxes) return null
 
-  // Para ver logs do progresso, descomente a linha de hook acima e:
-  // console.log(`Carregamento: ${loadedGames}/${totalGames} games`)
-
   return (
     <group>
       <Physics>
-        {/* chão */}
         <RigidBody type="fixed">
           <mesh receiveShadow position={[0, -1, 0]}>
             <boxGeometry args={[20, 1, 20]} />
             <meshStandardMaterial color="white" />
           </mesh>
         </RigidBody>
+        {boxes.map((box: BoxData, index: number) => {
+          const isSelected = selectedGame?.id === box.id
+          const targetPosition: [number, number, number] = isSelected
+            ? getSelectedGamePosition() // Posição calculada dinamicamente
+            : box.position
 
-        {/* caixa que cai */}
-
-        {boxes.map((box: BoxData, index: number) => (
-          <RigidBody key={`${box.id}-${index}`}>
-            <BoxGame
-              {...box}
-              position={box.position}
-              rotation={box.rotation}
-              onClick={() => {
-                console.log('Game clicado:', box.title)
-                handleChooseGames(box.title)
+          return (
+            <AnimatedBoxGame
+              key={`${box.id}-${index}`}
+              boxData={box}
+              isSelected={isSelected}
+              targetPosition={targetPosition}
+              onClick={(e: ThreeEvent<MouseEvent>) => {
+                handleChooseGames(e, box.title, box)
               }}
             />
-          </RigidBody>
-        ))}
+          )
+        })}
       </Physics>
+
+      {/* Plano de informações do jogo selecionado */}
+      {selectedGame && showInfo && (
+        <GameInfoPlane
+          gameData={selectedGame}
+          position={getInfoPlanePosition()} // Posição calculada dinamicamente
+          onClose={resetGameSelection}
+          visible={showInfo}
+        />
+      )}
     </group>
   )
 }

@@ -9,9 +9,10 @@ import { BoxData } from '../../type'
 import { useMemo, useRef } from 'react'
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
+import { ThreeEvent } from '@react-three/fiber'
 
 type CapinhaProps = {
-  onClick: (id: string) => void
+  onClick: (e: ThreeEvent<MouseEvent>, id: string) => void
   texture: Texture
   id: string
   position: [number, number, number]
@@ -19,7 +20,7 @@ type CapinhaProps = {
 }
 
 type BoxGameProps = {
-  onClick: (id: string) => void
+  onClick: (e: ThreeEvent<MouseEvent>, id: string) => void
 } & BoxData
 
 export const BoxGame = ({
@@ -44,7 +45,7 @@ export const BoxGame = ({
 
   return (
     <Capinha
-      onClick={onClick}
+      onClick={(e) => onClick(e, id)}
       id={id}
       rotation={rotation}
       position={position}
@@ -72,7 +73,7 @@ export function Capinha({
       ref={capinhaRef}
       scale={0.1}
       dispose={null}
-      onClick={() => onClick(id)}
+      onClick={(e: ThreeEvent<MouseEvent>) => onClick(e, id)}
       position={position}
       rotation={rotation}
     >

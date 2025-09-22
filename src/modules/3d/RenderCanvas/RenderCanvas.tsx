@@ -1,16 +1,15 @@
 'use client'
 
-import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-// import { CameraAnimationWrapper } from '../animations/components'
+import { OrbitControls } from '@react-three/drei'
 
 type RenderCanvasProps = {
   children: React.ReactNode
 }
 
 export const RenderCanvas = ({ children }: RenderCanvasProps) => {
-  const initialPosition: [number, number, number] = [-3, 13, 8]
-  // const initialLookAt: [number, number, number] = [0, 3, 15]
+  const initialPosition: [number, number, number] = [-9, 11, 21]
+  const initialLookAt: [number, number, number] = [-3, 5, 10]
   return (
     <Canvas
       shadows
@@ -28,13 +27,16 @@ export const RenderCanvas = ({ children }: RenderCanvasProps) => {
       <color attach="background" args={['#f2f2f5']} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1.5} />
-      {/* <CameraAnimationWrapper
-        initialPosition={initialPosition}
-        initialLookAt={initialLookAt}
-      >
-      </CameraAnimationWrapper> */}
       {children}
-      <OrbitControls />
+      <OrbitControls
+        position0={initialPosition}
+        target0={initialLookAt}
+        enableDamping={false}
+        dampingFactor={0.05}
+        enableZoom={false}
+        enableRotate={false}
+        enablePan={false}
+      />
     </Canvas>
   )
 }

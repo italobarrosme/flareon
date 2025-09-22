@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+@layer base {
+  body {
+    scrollbar-width: none;
+  }
+}
+
 @theme {
   --font-*: initial;
   --font-sans: Graphik, sans-serif;
@@ -25,6 +31,10 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-bounce-right: bounce-right 1s ease-in-out infinite;
 
+  /* 🎮 Game Info Animations */
+  --animate-game-hover-scale: game-hover-scale 0.2s ease-in-out;
+  --animate-game-slide-up: game-slide-up 0.3s ease-in-out;
+
   --color-primary-regular: hsl(210 91% 45%);
   --color-primary-foreground: hsl(0 10% 93%);
 
@@ -43,6 +53,34 @@
   --color-feedback-info: hsl(207 90% 57%);
 
   --color-complementary-highlight: hsl(39 100% 50%);
+
+  /* 🎮 Game Info Theme Colors */
+  --color-game-info-bg-primary: rgba(26, 26, 46, 0.95);
+  --color-game-info-bg-secondary: #16213e;
+  --color-game-info-bg-accent: rgba(72, 219, 251, 0.1);
+
+  --color-game-info-text-primary: #ffffff;
+  --color-game-info-text-secondary: #e0e0e0;
+  --color-game-info-text-accent: #48dbfb;
+  --color-game-info-text-title: #feca57;
+
+  --color-game-info-btn-danger: #ff4757;
+  --color-game-info-btn-danger-hover: #ff3742;
+  --color-game-info-btn-primary: #5f27cd;
+  --color-game-info-btn-primary-hover: #341f97;
+
+  --color-game-info-border-primary: #48dbfb;
+  --color-game-info-border-secondary: rgba(72, 219, 251, 0.3);
+
+  --color-flareon-blue: #48dbfb;
+  --color-flareon-purple: #5f27cd;
+  --color-flareon-purple-dark: #341f97;
+  --color-flareon-yellow: #feca57;
+  --color-flareon-red: #ff4757;
+  --color-flareon-red-dark: #ff3742;
+  --color-flareon-dark: #1a1a2e;
+  --color-flareon-dark-light: #16213e;
+  --color-flareon-gray-light: #e0e0e0;
 
   --breakpoint-sm: 680px;
   --breakpoint-tablet: 768px;
@@ -195,6 +233,27 @@
     }
     50% {
       transform: translateX(4px);
+    }
+  }
+
+  /* 🎮 Game Info Keyframes */
+  @keyframes game-hover-scale {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes game-slide-up {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }

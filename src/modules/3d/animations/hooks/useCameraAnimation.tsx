@@ -9,8 +9,8 @@ type CameraTarget = {
 }
 
 export const useCameraAnimation = (
-  initialPosition: [number, number, number] = [0, 5, 14],
-  initialLookAt: [number, number, number] = [0, 0, 0]
+  initialPosition: [number, number, number],
+  initialLookAt: [number, number, number]
 ) => {
   const [isAnimating, setIsAnimating] = useState(false)
   const targetPosition = useRef(new THREE.Vector3(...initialPosition))

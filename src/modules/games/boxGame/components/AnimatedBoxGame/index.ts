@@ -1,0 +1,1 @@
+export { AnimatedBoxGame } from './AnimatedBoxGame'
