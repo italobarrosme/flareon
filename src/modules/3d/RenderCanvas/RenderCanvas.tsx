@@ -24,7 +24,7 @@ export const RenderCanvas = ({ children }: RenderCanvasProps) => {
         far: 80,
       }}
     >
-      <color attach="background" args={['#f2f2f5']} />
+      <color attach="background" args={['#5f27cd']} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1.5} />
       {children}
@@ -33,9 +33,9 @@ export const RenderCanvas = ({ children }: RenderCanvasProps) => {
         target0={initialLookAt}
         enableDamping={false}
         dampingFactor={0.05}
-        enableZoom={false}
-        enableRotate={false}
-        enablePan={false}
+        // enableZoom={false}
+        // enableRotate={false}
+        // enablePan={false}
       />
     </Canvas>
   )
