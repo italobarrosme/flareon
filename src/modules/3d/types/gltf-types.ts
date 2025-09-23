@@ -1,4 +1,10 @@
-import { Object3D, Material, BufferGeometry, AnimationClip, Camera } from 'three'
+import {
+  Object3D,
+  Material,
+  BufferGeometry,
+  AnimationClip,
+  Camera,
+} from 'three'
 
 // Tipo base para um nó GLTF
 export interface GLTFNode extends Object3D {
