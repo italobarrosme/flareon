@@ -1,8 +1,8 @@
 import { useGLTF } from '@react-three/drei'
 import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
-export function MassaCinzenta(props: FurnitureProps) {
-  const { nodes, materials } = useGLTF('/massa-cinzenta.glb')
+export function Armadillo(props: FurnitureProps) {
+  const { nodes, materials } = useGLTF('/armadilho/armadilho.glb')
   const modelNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
@@ -16,4 +16,4 @@ export function MassaCinzenta(props: FurnitureProps) {
   )
 }
 
-useGLTF.preload('/massa-cinzenta.glb')
+useGLTF.preload('/armadilho/armadilho.glb')

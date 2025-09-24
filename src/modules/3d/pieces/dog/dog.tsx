@@ -1,8 +1,8 @@
 import { useGLTF } from '@react-three/drei'
 import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
-export function Tatu(props: FurnitureProps) {
-  const { nodes, materials } = useGLTF('/tatu.glb')
+export function Dog(props: FurnitureProps) {
+  const { nodes, materials } = useGLTF('/dog/dog.glb')
   const modelNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
@@ -16,4 +16,4 @@ export function Tatu(props: FurnitureProps) {
   )
 }
 
-useGLTF.preload('/tatu.glb')
+useGLTF.preload('/dog/dog.glb')

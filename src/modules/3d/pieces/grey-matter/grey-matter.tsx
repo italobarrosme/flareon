@@ -1,8 +1,8 @@
 import { useGLTF } from '@react-three/drei'
 import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
-export function Cachorro(props: FurnitureProps) {
-  const { nodes, materials } = useGLTF('/cachorro.glb')
+export function GrayMatter(props: FurnitureProps) {
+  const { nodes, materials } = useGLTF('/grey-metter/grey-metter.glb')
   const modelNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
@@ -16,4 +16,4 @@ export function Cachorro(props: FurnitureProps) {
   )
 }
 
-useGLTF.preload('/cachorro.glb')
+useGLTF.preload('/grey-metter/grey-metter.glb')
