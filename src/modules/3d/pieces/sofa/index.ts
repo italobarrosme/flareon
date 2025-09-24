@@ -1,0 +1,1 @@
+export { Sofa } from './sofa'

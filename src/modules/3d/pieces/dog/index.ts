@@ -1,0 +1,1 @@
+export { Dog } from './Dog'
