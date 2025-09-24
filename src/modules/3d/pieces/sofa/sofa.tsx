@@ -3,14 +3,14 @@ import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
 export function Sofa(props: FurnitureProps) {
   const { nodes, materials } = useGLTF('/sofa.glb')
-  const sofaNode = nodes.sofa as GLTFNode
+  const modelNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={sofaNode.geometry}
-        material={materials.sofa}
+        geometry={modelNode.geometry}
+        material={materials.model}
       />
     </group>
   )

@@ -11,12 +11,10 @@ export interface GLTFNode extends Object3D {
   geometry: BufferGeometry
   material?: Material | Material[]
 }
-
 // Tipo para os materiais GLTF
 export interface GLTFMaterials {
   [key: string]: Material
 }
-
 // Tipo para os nós GLTF
 export interface GLTFNodes {
   [key: string]: GLTFNode
@@ -71,7 +69,6 @@ export interface BedGLTF extends GLTFResult {
     model: Material
   }
 }
-
 export interface ChairGLTF extends GLTFResult {
   nodes: {
     model: GLTFNode
@@ -105,5 +102,14 @@ export interface CaseGLTF extends GLTFResult {
   }
   materials: {
     case: Material
+  }
+}
+
+export interface GrayMatterGLTF extends GLTFResult {
+  nodes: {
+    model: GLTFNode
+  }
+  materials: {
+    model: Material
   }
 }
