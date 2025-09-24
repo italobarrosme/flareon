@@ -1,3 +1,1 @@
 export { Chair } from './Chair'
-
-
