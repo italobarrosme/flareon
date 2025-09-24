@@ -107,3 +107,12 @@ export interface CaseGLTF extends GLTFResult {
     case: Material
   }
 }
+
+export interface MassaCinzentaGLTF extends GLTFResult {
+  nodes: {
+    model: GLTFNode
+  }
+  materials: {
+    model: Material
+  }
+}
