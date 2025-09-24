@@ -11,7 +11,10 @@ export function Dog(props: FurnitureProps) {
         receiveShadow
         geometry={modelNode.geometry}
         material={materials.model}
-      />
+        material-envMap={'city'}
+      >
+        <meshStandardMaterial color="#FEE2AD" />
+      </mesh>
     </group>
   )
 }

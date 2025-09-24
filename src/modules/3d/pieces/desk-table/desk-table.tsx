@@ -3,15 +3,20 @@ import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
 export function DeskTable(props: FurnitureProps) {
   const { nodes, materials } = useGLTF('/desk-table/desk-table.glb')
-  const modelNode = nodes.model as GLTFNode
+  const deskTableNode = nodes.model as GLTFNode
+
+  console.log(deskTableNode)
   return (
     <group {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={modelNode.geometry}
+        geometry={deskTableNode.geometry}
         material={materials.model}
-      />
+        scale={5}
+      >
+        <meshStandardMaterial color="#5D688A" />
+      </mesh>
     </group>
   )
 }

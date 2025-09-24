@@ -1,19 +1,13 @@
-import { Html } from '@react-three/drei'
-import { BoxData } from '@/modules/games/boxGame/type'
-import { GameInfoUI } from './GameInfoUI'
-
 type GameInfoPlaneProps = {
-  gameData: BoxData
   position: [number, number, number]
-  onClose: () => void
   visible?: boolean
+  children: React.ReactNode
 }
 
 export const GameInfoPlane = ({
-  gameData,
   position,
-  onClose,
   visible = true,
+  children,
 }: GameInfoPlaneProps) => {
   if (!visible) return null
 
@@ -31,20 +25,7 @@ export const GameInfoPlane = ({
         <meshStandardMaterial color="#16213e" transparent opacity={0.8} />
       </mesh>
 
-      {/* Conteúdo HTML sobreposto */}
-      <Html
-        transform
-        occlude
-        position={[0, 0, 0.01]}
-        style={{
-          width: '380px',
-          height: '640px',
-          pointerEvents: 'all',
-          userSelect: 'none',
-        }}
-      >
-        <GameInfoUI gameData={gameData} onClose={onClose} />
-      </Html>
+      {children}
     </group>
   )
 }

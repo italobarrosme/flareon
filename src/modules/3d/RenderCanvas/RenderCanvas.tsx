@@ -8,8 +8,8 @@ type RenderCanvasProps = {
 }
 
 export const RenderCanvas = ({ children }: RenderCanvasProps) => {
-  const initialPosition: [number, number, number] = [-9, 11, 21]
-  const initialLookAt: [number, number, number] = [-3, 5, 10]
+  const initialPosition: [number, number, number] = [-9, 22, 40]
+  const initialLookAt: [number, number, number] = [-3, 15, 10]
   return (
     <Canvas
       shadows
@@ -33,7 +33,7 @@ export const RenderCanvas = ({ children }: RenderCanvasProps) => {
         target0={initialLookAt}
         enableDamping={false}
         dampingFactor={0.05}
-        enableZoom={false}
+        // enableZoom={false}
         // enableRotate={false}
         // enablePan={false}
       />
