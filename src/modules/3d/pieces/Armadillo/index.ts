@@ -1,1 +1,1 @@
-export { Armadillo } from './Armadillo'
+export * from './Armadillo'

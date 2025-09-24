@@ -1,1 +1,1 @@
-export { Closet } from './Closet'
+export * from './Closet'
