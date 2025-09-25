@@ -15,15 +15,20 @@ import { AnimatedBoxGame } from '@/modules/games/boxGame/components'
 import { BoxData } from '@/modules/games/boxGame/type'
 import { GameInfoPlane, GameInfoUI } from '@/modules/games/components'
 import { useChooseGames } from '@/modules/games/hooks/useChooseGames'
-
-import { Case } from '@/modules/3d/pieces/Case'
-import { Chair } from '@/modules/3d/pieces/Chair'
-import { Closet } from '@/modules/3d/pieces/Closet'
-import { DeskTable } from '@/modules/3d/pieces/DeskTable'
-import { Dog } from '@/modules/3d/pieces/Dog'
-import { Sofa } from '@/modules/3d/pieces/Sofa'
-import { RapierDebug } from '@/modules/3d/utils/RapierDebug'
-import { Bed } from '@/modules/3d/pieces/Bed'
+import { BoxData } from '@/modules/games/boxGame/type'
+import { ThreeEvent } from '@react-three/fiber'
+import { EffectComposer, Outline } from '@react-three/postprocessing'
+import { useRef } from 'react'
+import { Selection, Select } from '@react-three/postprocessing'
+import { Chair } from '../pieces/chair/chair'
+import { Sofa } from '../pieces/Sofa'
+import { DeskTable } from '../pieces/desk-table/desk-table'
+import { Closet } from '../pieces/closet/closet'
+import { Case } from '../pieces/case/case'
+import { Html } from '@react-three/drei'
+import { Dog } from '../pieces/dog/dog'
+import { Bed2 } from '../pieces/Bed2'
+import { RapierDebug } from '../utils/RapierDebug'
 
 type SceneProps = {
   gameData: {
@@ -78,7 +83,7 @@ export const Scene = ({ gameData }: SceneProps) => {
               <Chair position={[6, 0, -5]} rotation={[0, -11, 0]} />
             </RigidBody>
             <RigidBody position={[-8, 0, -6]} rotation={[-Math.PI / 2, 0, 0]}>
-              <Bed />
+              <Bed2 />
             </RigidBody>
             <RigidBody>
               <Case position={[9, 10, -1.1]} rotation={[0, 11, 0]} />
