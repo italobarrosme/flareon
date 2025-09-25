@@ -19,4 +19,4 @@ export function Chair(props: FurnitureProps) {
   )
 }
 
-useGLTF.preload('/chair.glb')
+useGLTF.preload('/chair/chair.glb')

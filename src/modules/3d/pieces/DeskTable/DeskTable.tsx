@@ -21,4 +21,4 @@ export function DeskTable(props: FurnitureProps) {
   )
 }
 
-useGLTF.preload('/desk-table/Deskable.glb')
+useGLTF.preload('/desk-table/desk-table.glb')

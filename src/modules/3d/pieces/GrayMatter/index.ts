@@ -1,1 +1,1 @@
-export { GrayMatter } from './GrayMatter'
+export * from './GrayMatter'

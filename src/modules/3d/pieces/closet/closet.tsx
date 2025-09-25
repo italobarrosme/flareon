@@ -2,7 +2,7 @@ import { useGLTF } from '@react-three/drei'
 import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
 export function Closet(props: FurnitureProps) {
-  const { nodes, materials } = useGLTF('/closet/closet.glb')
+  const { nodes, materials } = useGLTF('/Closet/Closet.glb')
   const closetNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
@@ -19,4 +19,4 @@ export function Closet(props: FurnitureProps) {
   )
 }
 
-useGLTF.preload('/closet/closet.glb')
+useGLTF.preload('/Closet/Closet.glb')
