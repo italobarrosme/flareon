@@ -1,15 +1,15 @@
 import { useGLTF } from '@react-three/drei'
-import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
+import { GLTFNode, FurnitureProps } from '@/modules/3d/types/gltf-types'
 
 export function Sofa(props: FurnitureProps) {
   const { nodes, materials } = useGLTF('/sofa/sofa.glb')
-  const sofaNode = nodes.model as GLTFNode
+  const modelNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
-        geometry={sofaNode.geometry}
+        geometry={modelNode.geometry}
         material={materials.model}
         scale={4}
       >

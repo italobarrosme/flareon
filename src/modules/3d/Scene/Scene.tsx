@@ -1,21 +1,28 @@
 'use client'
 
 import { Physics, RigidBody } from '@react-three/rapier'
+import { ThreeEvent } from '@react-three/fiber'
+import {
+  EffectComposer,
+  Outline,
+  Selection,
+  Select,
+} from '@react-three/postprocessing'
+import { Html } from '@react-three/drei'
+import { useRef } from 'react'
+
 import { AnimatedBoxGame } from '@/modules/games/boxGame/components'
 import { GameInfoPlane, GameInfoUI } from '@/modules/games/components'
 import { useChooseGames } from '@/modules/games/hooks/useChooseGames'
 import { BoxData } from '@/modules/games/boxGame/type'
-import { ThreeEvent } from '@react-three/fiber'
-import { EffectComposer, Outline } from '@react-three/postprocessing'
-import { useRef } from 'react'
-import { Selection, Select } from '@react-three/postprocessing'
-import { Chair } from '../pieces/chair/chair'
+
+// Importações dos componentes 3D
+import { Chair } from '../pieces/Chair'
 import { Sofa } from '../pieces/Sofa'
-import { DeskTable } from '../pieces/desk-table/desk-table'
-import { Closet } from '../pieces/closet/closet'
-import { Case } from '../pieces/case/case'
-import { Html } from '@react-three/drei'
-import { Dog } from '../pieces/dog/dog'
+import { DeskTable } from '../pieces/DeskTable'
+import { Closet } from '../pieces/Closet'
+import { Case } from '../pieces/Case'
+import { Dog } from '../pieces/Dog'
 import { Bed2 } from '../pieces/Bed2'
 import { RapierDebug } from '../utils/RapierDebug'
 
@@ -77,9 +84,7 @@ export const Scene = ({ gameData }: SceneProps) => {
             <RigidBody>
               <Case position={[9, 10, -1.1]} rotation={[0, 11, 0]} />
             </RigidBody>
-            <RigidBody>
-              <DeskTable position={[8, 0, -5]} rotation={[0, 11, 0]} />
-            </RigidBody>
+            <DeskTable position={[8, 0, -5]} rotation={[0, 11, 0]} />
             <RigidBody>
               <Sofa position={[-8.5, 0, 8]} rotation={[0, -11, 0]} />
             </RigidBody>

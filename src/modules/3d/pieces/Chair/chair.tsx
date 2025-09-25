@@ -1,8 +1,8 @@
 import { useGLTF } from '@react-three/drei'
 import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
-export function Armadillo(props: FurnitureProps) {
-  const { nodes, materials } = useGLTF('/armadilho/armadilho.glb')
+export function Chair(props: FurnitureProps) {
+  const { nodes, materials } = useGLTF('/chair/chair.glb')
   const modelNode = nodes.model as GLTFNode
   return (
     <group {...props} dispose={null}>
@@ -11,9 +11,12 @@ export function Armadillo(props: FurnitureProps) {
         receiveShadow
         geometry={modelNode.geometry}
         material={materials.model}
-      />
+        scale={4}
+      >
+        <meshStandardMaterial color="#E8DFCA" />
+      </mesh>
     </group>
   )
 }
 
-useGLTF.preload('/armadilho/armadilho.glb')
+useGLTF.preload('/chair/chair.glb')
