@@ -1,4 +1,5 @@
 import { useGLTF } from '@react-three/drei'
+import { RigidBody } from '@react-three/rapier'
 import { GLTFNode, FurnitureProps } from '../../types/gltf-types'
 
 export function DeskTable(props: FurnitureProps) {
@@ -6,17 +7,19 @@ export function DeskTable(props: FurnitureProps) {
   const deskTableNode = nodes.model as GLTFNode
 
   return (
-    <group {...props} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={deskTableNode.geometry}
-        material={materials.model}
-        scale={5}
-      >
-        <meshStandardMaterial color="#5D688A" />
-      </mesh>
-    </group>
+    <RigidBody type="fixed" colliders="hull" {...props}>
+      <group dispose={null}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={deskTableNode.geometry}
+          material={materials.model}
+          scale={5}
+        >
+          <meshStandardMaterial color="#5D688A" />
+        </mesh>
+      </group>
+    </RigidBody>
   )
 }
 
