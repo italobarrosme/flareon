@@ -82,11 +82,6 @@ export const useRainBoxsGames = () => {
     return () => clearInterval(interval)
   }, [isSuccess, games])
 
-  console.log(
-    `${boxes.length} de ${games?.length || 0} games carregados`,
-    'boxes status'
-  )
-
   if (isLoading) return { boxes: [], isLoading: true }
   if (error) return { boxes: [], error: error.message, isLoading: false }
 

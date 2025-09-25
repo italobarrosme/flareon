@@ -14,9 +14,10 @@ import { Sofa } from '../pieces/Sofa'
 import { DeskTable } from '../pieces/desk-table/desk-table'
 import { Closet } from '../pieces/closet/closet'
 import { Case } from '../pieces/case/case'
-import { Bed } from '../pieces/bed/bed'
 import { Html } from '@react-three/drei'
 import { Dog } from '../pieces/dog/dog'
+import { Bed2 } from '../pieces/Bed2'
+import { RapierDebug } from '../utils/RapierDebug'
 
 type SceneProps = {
   gameData: {
@@ -58,10 +59,11 @@ export const Scene = ({ gameData }: SceneProps) => {
 
         <group>
           <Physics>
+            <RapierDebug />
             <RigidBody type="fixed">
               <Select>
                 <mesh receiveShadow position={[0, -3, 0]} ref={floorRef}>
-                  <boxGeometry args={[20, 1, 20]} />
+                  <boxGeometry args={[25, 1, 25]} />
                   <meshStandardMaterial color="#e3b4e4" />
                 </mesh>
               </Select>
@@ -69,8 +71,8 @@ export const Scene = ({ gameData }: SceneProps) => {
             <RigidBody>
               <Chair position={[6, 0, -5]} rotation={[0, -11, 0]} />
             </RigidBody>
-            <RigidBody>
-              <Bed position={[-8, 0, -6]} rotation={[0, 0, 0]} />
+            <RigidBody position={[-8, 0, -6]} rotation={[-Math.PI / 2, 0, 0]}>
+              <Bed2 />
             </RigidBody>
             <RigidBody>
               <Case position={[9, 10, -1.1]} rotation={[0, 11, 0]} />
@@ -79,7 +81,7 @@ export const Scene = ({ gameData }: SceneProps) => {
               <DeskTable position={[8, 0, -5]} rotation={[0, 11, 0]} />
             </RigidBody>
             <RigidBody>
-              <Sofa position={[-7.5, 0, 5]} rotation={[0, -11, 0]} />
+              <Sofa position={[-8.5, 0, 8]} rotation={[0, -11, 0]} />
             </RigidBody>
             <RigidBody>
               <Closet position={[9, 0, 5]} rotation={[0, 11, 0]} />
@@ -113,7 +115,7 @@ export const Scene = ({ gameData }: SceneProps) => {
                 userSelect: 'none',
               }}
             >
-              <section className="flex flex-col justify-center gap-4 bg-game-info-bg-primary max-w-96 p-4">
+              <section className="flex flex-col justify-center gap-4 bg-game-info-bg-primary max-w-96 p-4 rounded-2xl">
                 <h1 className="text-4xl font-bold text-game-info-text-primary">
                   Bem-vindo! Explore os jogos disponíveis nos cases espalhados
                   pelo quarto

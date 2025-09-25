@@ -5,7 +5,6 @@ export function DeskTable(props: FurnitureProps) {
   const { nodes, materials } = useGLTF('/desk-table/desk-table.glb')
   const deskTableNode = nodes.model as GLTFNode
 
-  console.log(deskTableNode)
   return (
     <group {...props} dispose={null}>
       <mesh

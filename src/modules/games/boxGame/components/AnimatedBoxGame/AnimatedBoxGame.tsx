@@ -28,23 +28,11 @@ export const AnimatedBoxGame = ({
   // Atualiza a posição alvo quando muda
   useEffect(() => {
     targetVec.current.set(...targetPosition)
-    console.log(
-      `🎯 Target position updated for ${boxData.id}:`,
-      targetPosition,
-      'isSelected:',
-      isSelected
-    )
 
     // Quando fica selecionado pela primeira vez, pega a posição atual do RigidBody
     if (isSelected && !wasSelected.current && rigidBodyRef.current) {
       const currentPos = rigidBodyRef.current.translation()
       currentPosition.current.set(currentPos.x, currentPos.y, currentPos.z)
-      console.log(
-        `🚀 Starting animation from:`,
-        currentPos,
-        'to:',
-        targetPosition
-      )
     }
 
     wasSelected.current = isSelected

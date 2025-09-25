@@ -54,16 +54,8 @@ export function EffectOutline({
         // Usar a currentBasePosition se disponível, senão usar a posição atual
         if (currentBasePosition) {
           basePosition.current.copy(currentBasePosition)
-          console.log(
-            '📌 EffectOutline: Usando currentBasePosition:',
-            currentBasePosition
-          )
         } else {
           basePosition.current.copy(state.camera.position)
-          console.log(
-            '📌 EffectOutline: Usando camera position:',
-            state.camera.position
-          )
         }
         wasAnimating.current = false
       }
