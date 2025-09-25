@@ -95,7 +95,6 @@ export const getGamesIGDB = async (limit: number = 20): Promise<IGDBGame[]> => {
     })
 
     const games: IGDBGame[] = await response.json()
-    console.log(`${games.length} jogos obtidos do IGDB`)
 
     return games
   } catch (error) {

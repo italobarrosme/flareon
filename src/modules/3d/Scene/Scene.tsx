@@ -1,22 +1,29 @@
 'use client'
 
 import { Physics, RigidBody } from '@react-three/rapier'
+import { ThreeEvent } from '@react-three/fiber'
+import {
+  EffectComposer,
+  Outline,
+  Selection,
+  Select,
+} from '@react-three/postprocessing'
+import { Html } from '@react-three/drei'
+import { useRef } from 'react'
+
 import { AnimatedBoxGame } from '@/modules/games/boxGame/components'
+import { BoxData } from '@/modules/games/boxGame/type'
 import { GameInfoPlane, GameInfoUI } from '@/modules/games/components'
 import { useChooseGames } from '@/modules/games/hooks/useChooseGames'
-import { BoxData } from '@/modules/games/boxGame/type'
-import { ThreeEvent } from '@react-three/fiber'
-import { EffectComposer, Outline } from '@react-three/postprocessing'
-import { useRef } from 'react'
-import { Selection, Select } from '@react-three/postprocessing'
-import { Chair } from '../pieces/Chair/Chair'
-import { Sofa } from '../pieces/Sofa/Sofa'
-import { DeskTable } from '../pieces/DeskTable/DeskTable'
-import { Closet } from '../pieces/Closet/Closet'
-import { Case } from '../pieces/Case/Case'
-import { Bed } from '../pieces/Bed/Bed'
-import { Html } from '@react-three/drei'
-import { Dog } from '../pieces/Dog/Dog'
+
+import { Case } from '@/modules/3d/pieces/Case'
+import { Chair } from '@/modules/3d/pieces/Chair'
+import { Closet } from '@/modules/3d/pieces/Closet'
+import { DeskTable } from '@/modules/3d/pieces/DeskTable'
+import { Dog } from '@/modules/3d/pieces/Dog'
+import { Sofa } from '@/modules/3d/pieces/Sofa'
+import { RapierDebug } from '@/modules/3d/utils/RapierDebug'
+import { Bed } from '@/modules/3d/pieces/Bed'
 
 type SceneProps = {
   gameData: {
@@ -58,10 +65,11 @@ export const Scene = ({ gameData }: SceneProps) => {
 
         <group>
           <Physics>
+            <RapierDebug />
             <RigidBody type="fixed">
               <Select>
                 <mesh receiveShadow position={[0, -3, 0]} ref={floorRef}>
-                  <boxGeometry args={[20, 1, 20]} />
+                  <boxGeometry args={[25, 1, 25]} />
                   <meshStandardMaterial color="#e3b4e4" />
                 </mesh>
               </Select>
@@ -69,8 +77,8 @@ export const Scene = ({ gameData }: SceneProps) => {
             <RigidBody>
               <Chair position={[6, 0, -5]} rotation={[0, -11, 0]} />
             </RigidBody>
-            <RigidBody>
-              <Bed position={[-8, 0, -6]} rotation={[0, 0, 0]} />
+            <RigidBody position={[-8, 0, -6]} rotation={[-Math.PI / 2, 0, 0]}>
+              <Bed />
             </RigidBody>
             <RigidBody>
               <Case position={[9, 10, -1.1]} rotation={[0, 11, 0]} />
@@ -79,7 +87,7 @@ export const Scene = ({ gameData }: SceneProps) => {
               <DeskTable position={[8, 0, -5]} rotation={[0, 11, 0]} />
             </RigidBody>
             <RigidBody>
-              <Sofa position={[-7.5, 0, 5]} rotation={[0, -11, 0]} />
+              <Sofa position={[-8.5, 0, 8]} rotation={[0, -11, 0]} />
             </RigidBody>
             <RigidBody>
               <Closet position={[9, 0, 5]} rotation={[0, 11, 0]} />
@@ -113,7 +121,7 @@ export const Scene = ({ gameData }: SceneProps) => {
                 userSelect: 'none',
               }}
             >
-              <section className="flex flex-col justify-center gap-4 bg-game-info-bg-primary max-w-96 p-4">
+              <section className="flex flex-col justify-center gap-4 bg-game-info-bg-primary max-w-96 p-4 rounded-2xl">
                 <h1 className="text-4xl font-bold text-game-info-text-primary">
                   Bem-vindo! Explore os jogos disponíveis nos cases espalhados
                   pelo quarto

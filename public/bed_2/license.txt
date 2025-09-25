@@ -1,0 +1,11 @@
+Model Information:
+* title:	Poliform_Bed
+* source:	https://sketchfab.com/3d-models/poliform-bed-16070c2e6faa405391ab7ada8bb0aed6
+* author:	Alexis Ramos (https://sketchfab.com/lex_ram)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Poliform_Bed" (https://sketchfab.com/3d-models/poliform-bed-16070c2e6faa405391ab7ada8bb0aed6) by Alexis Ramos (https://sketchfab.com/lex_ram) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -47,8 +47,6 @@ export const getImage = async (gameSearch: string): Promise<Image> => {
 
   const data = await response.json()
 
-  console.log(data, 'data ##############')
-
   const firstImage = data[0]
 
   setCache<Image>(cachekey, [firstImage])
